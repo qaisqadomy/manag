@@ -18,7 +18,7 @@ public static class MemberEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound(e.Message);
             }
         });
         membersGroup.MapGet("/Get{id}", (int memberId, IMemberService memberService) =>
@@ -30,7 +30,7 @@ public static class MemberEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound(e.Message);
             }
         });
         membersGroup.MapPost("/add", (MembersDto model, IMemberService memberService) =>
@@ -42,7 +42,7 @@ public static class MemberEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound(e.Message);
             }
         });
         membersGroup.MapDelete("/remove", (int memberId, IMemberService memberService) =>
@@ -54,7 +54,7 @@ public static class MemberEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound(e.Message);
             }
         });
         membersGroup.MapPut("/update", (MembersDto model, IMemberService memberService) =>
@@ -66,7 +66,7 @@ public static class MemberEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound(e.Message);
             }
         });
     }

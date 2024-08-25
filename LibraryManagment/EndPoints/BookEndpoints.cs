@@ -19,7 +19,7 @@ public static class BookEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound(e.Message);
             }
         });
         booksGroup.MapGet("/Get{id}", (int bookId, IBookService bookService) =>
@@ -31,7 +31,7 @@ public static class BookEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound(e.Message);
             }
         });
         booksGroup.MapPost("/add", (BookDto model, IBookService bookService) =>
@@ -43,7 +43,7 @@ public static class BookEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound(e.Message);
             }
         });
         booksGroup.MapDelete("/remove", (int bookId, IBookService bookService) =>
@@ -55,7 +55,7 @@ public static class BookEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound(e.Message);
             }
         });
         booksGroup.MapPut("/update", (BookDto model, IBookService bookService) =>
@@ -67,7 +67,7 @@ public static class BookEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(new { e.Message });
+                return Results.NotFound( e.Message );
             }
         });
     }
