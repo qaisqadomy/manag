@@ -1,0 +1,331 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/qais-qadomy/Downloads/Library/TestProject1/TestProject1.csproj": {}
+  },
+  "projects": {
+    "/home/qais-qadomy/Downloads/Library/Domain/Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/qais-qadomy/Downloads/Library/Domain/Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "/home/qais-qadomy/Downloads/Library/Domain/Domain.csproj",
+        "packagesPath": "/home/qais-qadomy/.nuget/packages/",
+        "outputPath": "/home/qais-qadomy/Downloads/Library/Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/qais-qadomy/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/qais-qadomy/.dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/qais-qadomy/Downloads/Library/Infrastructure/Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/qais-qadomy/Downloads/Library/Infrastructure/Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "/home/qais-qadomy/Downloads/Library/Infrastructure/Infrastructure.csproj",
+        "packagesPath": "/home/qais-qadomy/.nuget/packages/",
+        "outputPath": "/home/qais-qadomy/Downloads/Library/Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/qais-qadomy/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/qais-qadomy/.dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/qais-qadomy/Downloads/Library/Library/LibraryManagement.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/qais-qadomy/Downloads/Library/Library/LibraryManagement.csproj",
+        "projectName": "LibraryManagement",
+        "projectPath": "/home/qais-qadomy/Downloads/Library/Library/LibraryManagement.csproj",
+        "packagesPath": "/home/qais-qadomy/.nuget/packages/",
+        "outputPath": "/home/qais-qadomy/Downloads/Library/Library/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/qais-qadomy/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/qais-qadomy/Downloads/Library/Domain/Domain.csproj": {
+                "projectPath": "/home/qais-qadomy/Downloads/Library/Domain/Domain.csproj"
+              },
+              "/home/qais-qadomy/Downloads/Library/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/home/qais-qadomy/Downloads/Library/Infrastructure/Infrastructure.csproj"
+              },
+              "/home/qais-qadomy/Downloads/Library/Presentation/Application.csproj": {
+                "projectPath": "/home/qais-qadomy/Downloads/Library/Presentation/Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/qais-qadomy/.dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/qais-qadomy/Downloads/Library/Presentation/Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/qais-qadomy/Downloads/Library/Presentation/Application.csproj",
+        "projectName": "Application",
+        "projectPath": "/home/qais-qadomy/Downloads/Library/Presentation/Application.csproj",
+        "packagesPath": "/home/qais-qadomy/.nuget/packages/",
+        "outputPath": "/home/qais-qadomy/Downloads/Library/Presentation/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/qais-qadomy/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/qais-qadomy/Downloads/Library/Domain/Domain.csproj": {
+                "projectPath": "/home/qais-qadomy/Downloads/Library/Domain/Domain.csproj"
+              },
+              "/home/qais-qadomy/Downloads/Library/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/home/qais-qadomy/Downloads/Library/Infrastructure/Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/qais-qadomy/.dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/qais-qadomy/Downloads/Library/TestProject1/TestProject1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/qais-qadomy/Downloads/Library/TestProject1/TestProject1.csproj",
+        "projectName": "TestProject1",
+        "projectPath": "/home/qais-qadomy/Downloads/Library/TestProject1/TestProject1.csproj",
+        "packagesPath": "/home/qais-qadomy/.nuget/packages/",
+        "outputPath": "/home/qais-qadomy/Downloads/Library/TestProject1/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/qais-qadomy/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/qais-qadomy/Downloads/Library/Domain/Domain.csproj": {
+                "projectPath": "/home/qais-qadomy/Downloads/Library/Domain/Domain.csproj"
+              },
+              "/home/qais-qadomy/Downloads/Library/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/home/qais-qadomy/Downloads/Library/Infrastructure/Infrastructure.csproj"
+              },
+              "/home/qais-qadomy/Downloads/Library/Library/LibraryManagement.csproj": {
+                "projectPath": "/home/qais-qadomy/Downloads/Library/Library/LibraryManagement.csproj"
+              },
+              "/home/qais-qadomy/Downloads/Library/Presentation/Application.csproj": {
+                "projectPath": "/home/qais-qadomy/Downloads/Library/Presentation/Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.8.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/qais-qadomy/.dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

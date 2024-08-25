@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{622A7ACB-BD0E-43D5-9F7D-A4D8D692FEAB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Presentation\Application.csproj", "{2607C9CB-1114-491A-A33C-FF9290777EBA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{A87F0092-5C26-4E21-A174-6EDD2A4B6255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesTest", "ServicesTest\ServicesTest.csproj", "{3AE18FB7-5D6F-4046-9A25-92655EA30D5F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{56276E67-873A-47F0-BA08-0143DA005D7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7CE39799-3B2F-41CC-BB7C-7E9739CED43D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoriesTest", "RepositoriesTest\RepositoriesTest.csproj", "{1F7BB805-BC1D-4DA7-A927-5E8A47D9419D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagment", "LibraryManagment\LibraryManagment.csproj", "{CDDE4DDB-74B9-415B-BC20-4AADC6AB55ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{622A7ACB-BD0E-43D5-9F7D-A4D8D692FEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{622A7ACB-BD0E-43D5-9F7D-A4D8D692FEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{622A7ACB-BD0E-43D5-9F7D-A4D8D692FEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{622A7ACB-BD0E-43D5-9F7D-A4D8D692FEAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2607C9CB-1114-491A-A33C-FF9290777EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2607C9CB-1114-491A-A33C-FF9290777EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2607C9CB-1114-491A-A33C-FF9290777EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2607C9CB-1114-491A-A33C-FF9290777EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A87F0092-5C26-4E21-A174-6EDD2A4B6255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A87F0092-5C26-4E21-A174-6EDD2A4B6255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A87F0092-5C26-4E21-A174-6EDD2A4B6255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A87F0092-5C26-4E21-A174-6EDD2A4B6255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AE18FB7-5D6F-4046-9A25-92655EA30D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE18FB7-5D6F-4046-9A25-92655EA30D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE18FB7-5D6F-4046-9A25-92655EA30D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE18FB7-5D6F-4046-9A25-92655EA30D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F7BB805-BC1D-4DA7-A927-5E8A47D9419D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F7BB805-BC1D-4DA7-A927-5E8A47D9419D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F7BB805-BC1D-4DA7-A927-5E8A47D9419D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F7BB805-BC1D-4DA7-A927-5E8A47D9419D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDDE4DDB-74B9-415B-BC20-4AADC6AB55ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDE4DDB-74B9-415B-BC20-4AADC6AB55ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDE4DDB-74B9-415B-BC20-4AADC6AB55ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDE4DDB-74B9-415B-BC20-4AADC6AB55ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0ABA79B-4943-41F8-AD83-4BBEB6FE8A51}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2607C9CB-1114-491A-A33C-FF9290777EBA} = {56276E67-873A-47F0-BA08-0143DA005D7F}
+		{622A7ACB-BD0E-43D5-9F7D-A4D8D692FEAB} = {56276E67-873A-47F0-BA08-0143DA005D7F}
+		{A87F0092-5C26-4E21-A174-6EDD2A4B6255} = {56276E67-873A-47F0-BA08-0143DA005D7F}
+		{3AE18FB7-5D6F-4046-9A25-92655EA30D5F} = {7CE39799-3B2F-41CC-BB7C-7E9739CED43D}
+		{1F7BB805-BC1D-4DA7-A927-5E8A47D9419D} = {7CE39799-3B2F-41CC-BB7C-7E9739CED43D}
+		{CDDE4DDB-74B9-415B-BC20-4AADC6AB55ED} = {56276E67-873A-47F0-BA08-0143DA005D7F}
+	EndGlobalSection
+EndGlobal
