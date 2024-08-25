@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7n7PZqaYR1o=",
+  "dgSpecHash": "qteAA0Ra5Js=",
   "success": true,
   "projectFilePath": "/home/qais/Downloads/manag/Library/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,8 @@
     "/home/qais/.nuget/packages/microsoft.testing.platform/1.2.1/microsoft.testing.platform.1.2.1.nupkg.sha512",
     "/home/qais/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/home/qais/.nuget/packages/moq/4.20.70/moq.4.20.70.nupkg.sha512",
+    "/home/qais/.nuget/packages/npgsql/8.0.3/npgsql.8.0.3.nupkg.sha512",
+    "/home/qais/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.4/npgsql.entityframeworkcore.postgresql.8.0.4.nupkg.sha512",
     "/home/qais/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/home/qais/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/home/qais/.nuget/packages/system.composition/6.0.0/system.composition.6.0.0.nupkg.sha512",

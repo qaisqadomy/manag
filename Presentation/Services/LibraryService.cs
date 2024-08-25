@@ -1,4 +1,5 @@
-﻿using Application.IServices;
+﻿using Application.DTOs;
+using Application.IServices;
 using Domain.Entities;
 using Domain.Exeptions;
 using Domain.IRepo;
@@ -9,9 +10,9 @@ public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IB
 {
     public void BorrowBook(int bookId, int memberId)
     {
-        Book book = (bookRepo.GetAll() ?? throw new NotFound("no books ")).FirstOrDefault(b => b.Id == bookId)!;
+        Book book = (bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId) ?? throw new NotFound("no books "))!;
         Member member =
-            (memberRepo.GetAll() ?? throw new NotFound("no members")).FirstOrDefault(m => m.Id == memberId)!;
+            (memberRepo.GetAll().FirstOrDefault(m => m.Id == memberId) ?? throw new NotFound("no members"))!;
 
         if (book == null)
         {
@@ -33,7 +34,7 @@ public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IB
 
     public void ReturnBook(int bookId)
     {
-        Book book = (bookRepo.GetAll() ?? throw new NotFound("no books")).FirstOrDefault(b => b.Id == bookId)!;
+        Book book = (bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId) ?? throw new NotFound("no books"))!;
 
         if (book == null)
         {
@@ -46,5 +47,18 @@ public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IB
         }
 
         libraryRepo.ReturnBook(bookId);
+    }
+    
+    public List<BookDto> GetBorrowed()
+    {
+        List<Book> books = libraryRepo.GetBorrowed();
+        return books.ConvertAll(book =>  new BookDto{
+            Id = book.Id,
+            Title = book.Title,
+            Author =book.Author,
+            IsBorrowed = book.IsBorrowed,
+            BorrowedDate = book.BorrowedDate,
+            BorrowedBy = book.BorrowedBy
+        });
     }
 }

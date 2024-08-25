@@ -42,4 +42,15 @@ public class LibraryRepo(
 
         bookRepo.Return(book);
     }
+    
+    public List<Book> GetBorrowed()
+    {
+        List<Book> books = (bookRepo.GetAll() ?? throw new NotFound("no books"))!;
+        List<Book> borrowed = new List<Book>();
+        foreach(Book b in books)
+        {
+            if(b.IsBorrowed) borrowed.Add(b);
+        }
+        return borrowed;
+    }
 }

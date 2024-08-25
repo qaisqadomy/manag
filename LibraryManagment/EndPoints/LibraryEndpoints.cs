@@ -1,3 +1,4 @@
+using Application.DTOs;
 using Application.IServices;
 
 namespace LibraryManagment.EndPoints;
@@ -26,6 +27,19 @@ public static class LibraryEndpoints
             {
                 libraryService.ReturnBook(bookId);
                 return Results.Ok("returned successfully");
+            }
+            catch (Exception e)
+            {
+                return Results.NotFound(e.Message);
+            }
+        });
+
+        libraryGroup.MapGet("/getBorrowed", (ILibraryService libraryService) =>
+        {
+            try
+            {
+                List<BookDto> books= libraryService.GetBorrowed();
+                return Results.Ok(books);
             }
             catch (Exception e)
             {
