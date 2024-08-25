@@ -48,7 +48,6 @@ C:/Users/qadom/Downloads/qaisnow/Libraryproj/Library/Domain/obj/Debug/net8.0/ref
 /home/qais/Downloads/manag/Library/Domain/bin/Debug/net8.0/Domain.deps.json
 /home/qais/Downloads/manag/Library/Domain/bin/Debug/net8.0/Domain.dll
 /home/qais/Downloads/manag/Library/Domain/bin/Debug/net8.0/Domain.pdb
-/home/qais/Downloads/manag/Library/Domain/obj/Debug/net8.0/Domain.csproj.AssemblyReference.cache
 /home/qais/Downloads/manag/Library/Domain/obj/Debug/net8.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
 /home/qais/Downloads/manag/Library/Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache
 /home/qais/Downloads/manag/Library/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs

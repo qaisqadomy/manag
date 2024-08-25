@@ -14,16 +14,6 @@ public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IB
         Member member =
             (memberRepo.GetAll().FirstOrDefault(m => m.Id == memberId) ?? throw new NotFound("no members"))!;
 
-        if (book == null)
-        {
-            throw new NotFound("book Doesnt Exist");
-        }
-
-        if (member == null)
-        {
-            throw new NotFound("Member Doesnt Exist");
-        }
-
         if (book.IsBorrowed)
         {
             throw new InvalidOperation("Book is already borrowed.");
@@ -34,12 +24,7 @@ public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IB
 
     public void ReturnBook(int bookId)
     {
-        Book book = (bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId) ?? throw new NotFound("no books"))!;
-
-        if (book == null)
-        {
-            throw new NotFound("book not found");
-        }
+        Book book = (bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId) ?? throw new BookNotFound("no books"))!;
 
         if (!book.IsBorrowed)
         {
@@ -48,14 +33,15 @@ public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IB
 
         libraryRepo.ReturnBook(bookId);
     }
-    
+
     public List<BookDto> GetBorrowed()
     {
         List<Book> books = libraryRepo.GetBorrowed();
-        return books.ConvertAll(book =>  new BookDto{
+        return books.ConvertAll(book => new BookDto
+        {
             Id = book.Id,
             Title = book.Title,
-            Author =book.Author,
+            Author = book.Author,
             IsBorrowed = book.IsBorrowed,
             BorrowedDate = book.BorrowedDate,
             BorrowedBy = book.BorrowedBy

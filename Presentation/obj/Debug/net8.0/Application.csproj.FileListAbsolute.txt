@@ -73,11 +73,6 @@ C:/Users/qadom/Downloads/qaisnow/Libraryproj/Library/Presentation/obj/Debug/net8
 /home/qais/Downloads/Library/Presentation/obj/Debug/net8.0/refint/Application.dll
 /home/qais/Downloads/Library/Presentation/obj/Debug/net8.0/Application.pdb
 /home/qais/Downloads/Library/Presentation/obj/Debug/net8.0/ref/Application.dll
-/home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/Application.dll
-/home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/refint/Application.dll
-/home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/Application.pdb
-/home/qais/Downloads/manag/Library/Presentation/bin/Debug/net8.0/.msCoverageExtensionSourceRootsMapping_Application
-/home/qais/Downloads/manag/Library/Presentation/bin/Debug/net8.0/CoverletSourceRootsMapping_Application
 /home/qais/Downloads/manag/Library/Presentation/bin/Debug/net8.0/Application.deps.json
 /home/qais/Downloads/manag/Library/Presentation/bin/Debug/net8.0/Application.dll
 /home/qais/Downloads/manag/Library/Presentation/bin/Debug/net8.0/Application.pdb
@@ -92,4 +87,7 @@ C:/Users/qadom/Downloads/qaisnow/Libraryproj/Library/Presentation/obj/Debug/net8
 /home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/Application.csproj.CoreCompileInputs.cache
 /home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/Application.sourcelink.json
 /home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/Applicat.44B5EDA2.Up2Date
+/home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/Application.dll
+/home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/refint/Application.dll
+/home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/Application.pdb
 /home/qais/Downloads/manag/Library/Presentation/obj/Debug/net8.0/ref/Application.dll

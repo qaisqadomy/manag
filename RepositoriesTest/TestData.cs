@@ -67,6 +67,28 @@ public static class TestData
                 BorrowedBy = null
             }
         ];
+        public static List<Book> MultipleborroedBooks =>
+        [
+            new Book
+            {
+                Id = 1,
+                Title = "Book 1",
+                Author = "Author 1",
+                IsBorrowed = true,
+                BorrowedDate = DateTime.Now,
+                BorrowedBy = 1
+            },
+
+            new Book
+            {
+                Id = 2,
+                Title = "Book 2",
+                Author = "Author 2",
+                 IsBorrowed = true,
+                BorrowedDate = DateTime.Now,
+                BorrowedBy = 2
+            }
+        ];
     
 
     public static Book BorrowedBook =>new Book

@@ -1,3 +1,4 @@
+using Application.DTOs;
 using Application.Services;
 using Domain.Entities;
 using Domain.Exeptions;
@@ -104,21 +105,23 @@ public class LibraryServiceTests
     {
         _bookRepoMock.Setup(repo => repo.GetAll())
             .Returns(new List<Book>());
-        Assert.Throws<NotFound>(() => _libraryService.ReturnBook(1));
+        Assert.Throws<BookNotFound>(() => _libraryService.ReturnBook(1));
     }
 
     [Fact]
     public void ReturnBook_BookDoesntExist_ShouldThrowNotFoundException()
     {
-        var books = new List<Book>
-        {
-            new Book { Id = 1, IsBorrowed = true, Title = "qais", Author = "qais" },
-            new Book { Id = 2, IsBorrowed = true, Title = "qais", Author = "qais" }
-        };
-        _bookRepoMock.Setup(repo => repo.GetAll())
-            .Returns(books);
+           List<Book> books = new List<Book>
+    {
+        new Book { Id = 1, IsBorrowed = true, Title = "Book 1", Author = "Author 1" },
+        new Book { Id = 2, IsBorrowed = true, Title = "Book 2", Author = "Author 2" }
+    };
 
-        Assert.Throws<NotFound>(() => _libraryService.ReturnBook(3));
+    _bookRepoMock.Setup(repo => repo.GetAll())
+        .Returns(books);
+
+    Assert.Throws<BookNotFound>(() => _libraryService.ReturnBook(3));
+
     }
 
     [Fact]
@@ -138,5 +141,47 @@ public class LibraryServiceTests
             .Returns(books);
         _libraryService.ReturnBook(1);
         _libraryRepoMock.Verify(repo => repo.ReturnBook(1), Times.Once);
+    }
+    [Fact]
+    public void GetBorrowed_shouldreturnonlyborrowedbooks()
+    {
+        // Arrange
+        var books = new List<Book>
+        {
+            new Book
+            {
+                Id = 1,
+                Title = "Book 1",
+                Author = "Author 1",
+                IsBorrowed = true,
+                BorrowedDate = DateTime.Now,
+                BorrowedBy = 1
+            },
+            new Book
+            {
+                Id = 2,
+                Title = "Book 2",
+                Author = "Author 2",
+                IsBorrowed = true,
+                BorrowedDate = DateTime.Now,
+                BorrowedBy = 2
+            }
+        };
+
+        _libraryRepoMock.Setup(repo => repo.GetBorrowed()).Returns(books);
+
+        // Act
+        var result = _libraryService.GetBorrowed();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(2, result.Count);
+        Assert.All(result, dto =>
+        {
+            Assert.True(dto.IsBorrowed);
+        });
+
+        // Verify that the method was called exactly once
+        _libraryRepoMock.Verify(repo => repo.GetBorrowed(), Times.Once);
     }
 }

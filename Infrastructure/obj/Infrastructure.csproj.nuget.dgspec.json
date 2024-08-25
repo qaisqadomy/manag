@@ -42,30 +42,6 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "Castle.Core": {
-              "target": "Package",
-              "version": "[5.1.1, )"
-            },
-            "JetBrains.Annotations": {
-              "target": "Package",
-              "version": "[2024.2.0, )"
-            },
-            "Microsoft.Testing.Extensions.CodeCoverage": {
-              "target": "Package",
-              "version": "[17.11.5, )"
-            },
-            "Moq": {
-              "target": "Package",
-              "version": "[4.20.70, )"
-            },
-            "coverlet.collector": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.2, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -129,14 +105,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Castle.Core": {
-              "target": "Package",
-              "version": "[5.1.1, )"
-            },
-            "JetBrains.Annotations": {
-              "target": "Package",
-              "version": "[2024.2.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.8, )"
@@ -147,27 +115,17 @@
               "target": "Package",
               "version": "[8.0.8, )"
             },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[8.0.0, )"
             },
-            "Microsoft.Testing.Extensions.CodeCoverage": {
-              "target": "Package",
-              "version": "[17.11.5, )"
-            },
-            "Moq": {
-              "target": "Package",
-              "version": "[4.20.70, )"
-            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[8.0.4, )"
-            },
-            "coverlet.collector": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.2, )"
             }
           },
           "imports": [

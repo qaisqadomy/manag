@@ -91,7 +91,7 @@ namespace RepositoriesTest
         [Fact]
         public void ReturnBook_ShouldReturnBook_WhenValid()
         {
-            var books = new List<Book>
+            List<Book> books = new List<Book>
             {TestData.BorrowedBook
             };
             _inMemoryDb.DbContext.Books.AddRange(books);
@@ -100,11 +100,19 @@ namespace RepositoriesTest
 
             _libraryRepo.ReturnBook(1);
 
-            var book = _inMemoryDb.DbContext.Books.SingleOrDefault(b => b.Id == 1);
+            Book book = _inMemoryDb.DbContext.Books.SingleOrDefault(b => b.Id == 1)!;
             Assert.NotNull(book);
             Assert.False(book.IsBorrowed);
             Assert.Null(book.BorrowedBy);
             Assert.Null(book.BorrowedDate);
+        }
+        [Fact]
+        public void GetBorrowed_shouldreturnonlyborrowedbooks(){
+            List<Book> books =  TestData.MultipleborroedBooks;
+              _inMemoryDb.DbContext.Books.AddRange(books);
+            _inMemoryDb.DbContext.SaveChanges();
+            List<Book> fromdata = _libraryRepo.GetBorrowed();
+            Assert.Equal(books,fromdata);
         }
     }
 }
