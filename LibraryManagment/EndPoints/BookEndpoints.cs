@@ -1,5 +1,6 @@
 using Application.DTOs;
 using Application.Services;
+using FluentValidation;
 
 namespace LibraryManagment.EndPoints;
 
@@ -7,68 +8,38 @@ public static class BookEndpoints
 {
     public static void MapBookEndpoints(this WebApplication app)
     {
-        var booksGroup = app.MapGroup("/Books")
+        var booksGroup = app.MapGroup("/books")
             .WithTags("Books");
 
-        booksGroup.MapGet("/GetAll", (BookService bookService) =>
+        booksGroup.MapGet("/", (BookService bookService) =>
         {
-            try
-            {
-                List<BookDto> list = bookService.GetAll();
-                return Results.Ok(list);
-            }
-            catch (Exception e)
-            {
-                return Results.NotFound(e.Message);
-            }
+
+            List<BookDTO> list = bookService.GetAll();
+            return Results.Ok(list);
+
         });
-        booksGroup.MapGet("/Get{id}", (int bookId, BookService bookService) =>
+        booksGroup.MapGet("/{id}", (int bookId, BookService bookService) =>
         {
-            try
-            {
-                BookDto book = bookService.Find(bookId);
-                return Results.Ok(book);
-            }
-            catch (Exception e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            BookDTO book = bookService.Find(bookId);
+            return Results.Ok(book);
         });
-        booksGroup.MapPost("/add", (BookDto model, BookService bookService) =>
+        booksGroup.MapPost("/", (BookDtoUpdate model, BookService bookService) =>
         {
-            try
-            {
-                bookService.Add(model);
-                return Results.Ok("added successfully");
-            }
-            catch (Exception e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            
+            bookService.Add(model);
+            return Results.Created();
+
         });
-        booksGroup.MapDelete("/remove", (int bookId, BookService bookService) =>
+        booksGroup.MapDelete("/", (int bookId, BookService bookService) =>
         {
-            try
-            {
-                bookService.Remove(bookId);
-                return Results.Ok("removed successfully");
-            }
-            catch (Exception e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            bookService.Remove(bookId);
+            return Results.NoContent();
+
         });
-        booksGroup.MapPut("/update", (BookDto model, BookService bookService) =>
+        booksGroup.MapPut("/", (BookDtoUpdate model, BookService bookService) =>
         {
-            try
-            {
-                bookService.Update(model);
-                return Results.Ok("updated successfully");
-            }
-            catch (Exception e)
-            {
-                return Results.NotFound( e.Message );
-            }
+            bookService.Update(model);
+            return Results.Ok("updated successfully");
         });
     }
 }

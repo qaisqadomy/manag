@@ -5,9 +5,9 @@ using Domain.IRepo;
 
 namespace Application.Services;
 
-public class MemberService(IMemberRepo repo) 
+public class MemberService(IMemberRepo repo)
 {
-    public void Add(MembersDto model)
+    public void Add(MemberDtoUpdate model)
     {
         Member member = new Member
         {
@@ -17,10 +17,10 @@ public class MemberService(IMemberRepo repo)
         repo.Add(member);
     }
 
-    public List<MembersDto> GetAll()
+    public List<MemberDto> GetAll()
     {
         List<Member> members = repo.GetAll();
-        return members.ConvertAll(member => new MembersDto
+        return members.ConvertAll(member => new MemberDto
         {
             Id = member.Id,
             Name = member.Name,
@@ -33,22 +33,21 @@ public class MemberService(IMemberRepo repo)
         repo.Remove(memberId);
     }
 
-    public void Update(MembersDto model)
+    public void Update(MemberDtoUpdate model)
     {
         Member member = new Member
         {
-            Id = model.Id,
             Name = model.Name,
             Email = model.Email
         };
         repo.Update(member);
     }
 
-    public MembersDto Find(int memberId)
+    public MemberDto Find(int memberId)
     {
         Member member = repo.Find(memberId)!;
-        if (member == null) throw new NotFound("member not found");
-        MembersDto memberDto = new MembersDto
+
+        MemberDto memberDto = new MemberDto
         {
             Id = member.Id,
             Name = member.Name,

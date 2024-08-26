@@ -4,16 +4,30 @@ using Domain.IRepo;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using LibraryManagment.EndPoints;
+using LibraryManagment.Middleware;
+using FluentValidation.AspNetCore;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddLogging();
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddControllers()
+    .AddFluentValidationAutoValidation()
+    .AddFluentValidationClientsideAdapters()
+    .AddFluentValidation(fv =>
+    {
+        fv.RegisterValidatorsFromAssemblyContaining<CreateBookDTOValidator>();
+    });
 
 builder.Services.AddScoped<BookService>();
 builder.Services.AddScoped<MemberService>();
@@ -31,6 +45,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapMemberEndpoints();
 app.MapBookEndpoints();

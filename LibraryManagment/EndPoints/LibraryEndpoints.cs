@@ -10,41 +10,21 @@ public static class LibraryEndpoints
         var libraryGroup = app.MapGroup("/library").WithTags("Library");
         libraryGroup.MapPost("/borrow", (int bookId, int memberId, LibraryService libraryService) =>
         {
-            try
-            {
-                 libraryService.BorrowBook(bookId, memberId);
-                return Results.Ok("borrowed successfully");
-            }
-            catch (Exception e)
-            {
-                return Results.BadRequest(e.Message);
-            }
-        });
-        
-        libraryGroup.MapPost("/return", (int bookId, LibraryService libraryService) =>
-        {
-            try
-            {
-                libraryService.ReturnBook(bookId);
-                return Results.Ok("returned successfully");
-            }
-            catch (Exception e)
-            {
-                return Results.BadRequest(e.Message);
-            }
+            libraryService.BorrowBook(bookId, memberId);
+            return Results.Ok("borrowed successfully");
         });
 
-        libraryGroup.MapGet("/getBorrowed", (LibraryService libraryService) =>
+        libraryGroup.MapPost("/return", (int bookId, LibraryService libraryService) =>
         {
-            try
-            {
-                List<BookDto> books= libraryService.GetBorrowed();
-                return Results.Ok(books);
-            }
-            catch (Exception e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            libraryService.ReturnBook(bookId);
+            return Results.Ok("returned successfully");
+
+        });
+
+        libraryGroup.MapGet("/", (LibraryService libraryService) =>
+        {
+            List<BookDTO> books = libraryService.GetBorrowed();
+            return Results.Ok(books);
         });
     }
 }

@@ -15,12 +15,12 @@ public class LibraryRepo(
         Book book = books.FirstOrDefault(b => b.Id == id)!;
         if (book == null)
         {
-            throw new BookNotFound("Book not found.");
+            throw new BookNotFound($"Book with the Id :{id} doesn't exist");
         }
 
         if (bookRepo.IsBorrowed(book.Id))
         {
-            throw new AlreadyBorrowed("Book is already borrowed.");
+            throw new AlreadyBorrowed($"Book is with the Id : {id} already borrowed.");
         }
 
         bookRepo.Borrow(book, memberId);
@@ -32,12 +32,12 @@ public class LibraryRepo(
         Book book = books.FirstOrDefault(b => b.Id == id)!;
         if (book == null)
         {
-            throw new BookNotFound("Book not found.");
+            throw new BookNotFound($"Book with the Id : {id} doesn't exist");
         }
 
         if (!book.IsBorrowed)
         {
-            throw new NotBorrowed("Book is not currently borrowed.");
+            throw new NotBorrowed($"Book with the id: {id} is not borrowed.");
         }
 
         bookRepo.Return(book);
@@ -45,7 +45,7 @@ public class LibraryRepo(
     
     public List<Book> GetBorrowed()
     {
-        List<Book> books = (bookRepo.GetAll() ?? throw new NotFound("no books"))!;
+        List<Book> books = bookRepo.GetAll();
         List<Book> borrowed = new List<Book>();
         foreach(Book b in books)
         {

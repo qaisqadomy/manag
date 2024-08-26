@@ -5,18 +5,12 @@ using Domain.IRepo;
 
 namespace Application.Services;
 
-public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IBookRepo bookRepo) 
+public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IBookRepo bookRepo)
 {
     public void BorrowBook(int bookId, int memberId)
     {
         Book book = (bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId) ?? throw new NotFound("no books "))!;
-        Member member =
-            (memberRepo.GetAll().FirstOrDefault(m => m.Id == memberId) ?? throw new NotFound("no members"))!;
-
-        if (book.IsBorrowed)
-        {
-            throw new InvalidOperation("Book is already borrowed.");
-        }
+        Member member = (memberRepo.GetAll().FirstOrDefault(m => m.Id == memberId) ?? throw new NotFound("no members"))!;
 
         libraryRepo.BorrowBook(bookId, memberId);
     }
@@ -25,18 +19,13 @@ public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IB
     {
         Book book = (bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId) ?? throw new BookNotFound("no books"))!;
 
-        if (!book.IsBorrowed)
-        {
-            throw new InvalidOperation("Book is not borrowed.");
-        }
-
         libraryRepo.ReturnBook(bookId);
     }
 
-    public List<BookDto> GetBorrowed()
+    public List<BookDTO> GetBorrowed()
     {
         List<Book> books = libraryRepo.GetBorrowed();
-        return books.ConvertAll(book => new BookDto
+        return books.ConvertAll(book => new BookDTO
         {
             Id = book.Id,
             Title = book.Title,

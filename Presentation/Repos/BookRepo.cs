@@ -7,10 +7,11 @@ namespace Application.Repos;
 
 public class BookRepo(AppDbContext context) : IBookRepo
 {
+
     public void Add(Book book)
     {
-        if (context.Books.Any(b => b.Author == book.Author && b.Title == book.Title))
-            throw new BookExists("Book already exists");
+        if (context.Books.Any(b => b.Title == book.Title))
+            throw new BookExists($"Book with the name:{ book.Title},already exists");
 
         context.Books.Add(book);
         context.SaveChanges();
@@ -18,7 +19,7 @@ public class BookRepo(AppDbContext context) : IBookRepo
 
     public void Remove(int bookId)
     {
-            Book book = context.Books.Find(bookId) ?? throw new BookNotFound("Book not found");
+            Book book = context.Books.Find(bookId) ?? throw new BookNotFound($"Book with the Id : {bookId} doesn't exist");
 
             context.Books.Remove(book);
             context.SaveChanges();
@@ -26,14 +27,14 @@ public class BookRepo(AppDbContext context) : IBookRepo
 
     public void Update(Book book)
     {
-        Book existingBook = context.Books.Find(book.Id) ?? throw new BookNotFound("Book not found");
+        Book existingBook = context.Books.Find(book.Id) ?? throw new BookNotFound($"Book with the Id : {book.Id} doesn't exist");
         context.Entry(existingBook).CurrentValues.SetValues(book);
         context.SaveChanges();
     }
 
     public Book Find(int bookId)
     {
-        Book book = context.Books.Find(bookId) ?? throw new BookNotFound("Book not found");
+        Book book = context.Books.Find(bookId) ?? throw new BookNotFound($"Book with the Id : {bookId} doesn't exist");
         return book;
     }
 
@@ -44,14 +45,14 @@ public class BookRepo(AppDbContext context) : IBookRepo
 
     public bool IsBorrowed(int bookid)
     {
-        Book boo = context.Books.Find(bookid) ?? throw new BookNotFound("Book not found");
+        Book boo = context.Books.Find(bookid) ?? throw new BookNotFound($"Book with the Id : {bookid} doesn't exist");
         return boo.IsBorrowed;
     }
 
     public void Borrow(Book book, int memberId)
     {
         Book b = context.Books.FirstOrDefault(b => b.Id == book.Id)
-                 ?? throw new BookNotFound("Book not found");
+                 ?? throw new BookNotFound($"Book with the Id : {book.Id} doesn't exist");
 
         if (IsBorrowed(b.Id))
         {
@@ -69,11 +70,11 @@ public class BookRepo(AppDbContext context) : IBookRepo
     public void Return(Book book)
     {
         var b = context.Books.FirstOrDefault(b => b.Id == book.Id)
-                ?? throw new BookNotFound("Book not found");
+                ?? throw new BookNotFound($"Book with the Id : {book.Id} doesn't exist");
 
         if (!IsBorrowed(b.Id))
         {
-            throw new NotBorrowed("Book isn't borrowed");
+            throw new NotBorrowed("Book is not borrowed");
         }
 
         b.IsBorrowed = false;

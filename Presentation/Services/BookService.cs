@@ -7,7 +7,7 @@ namespace Application.Services;
 
 public class BookService(IBookRepo repo) 
 {
-    public void Add(BookDto model)
+    public void Add(BookDtoUpdate model)
     {
         Book book = new Book
         {
@@ -20,15 +20,15 @@ public class BookService(IBookRepo repo)
         repo.Add(book);
     }
 
-    public List<BookDto> GetAll()
+    public List<BookDTO> GetAll()
     {
         List<Book> books = repo.GetAll();
         if (books.Count == 0)
         {
-            return new List<BookDto>();
+            return new List<BookDTO>();
         }
 
-        return books.ConvertAll(book => new BookDto
+        return books.ConvertAll(book => new BookDTO
         {
             Id = book.Id,
             Title = book.Title,
@@ -44,23 +44,21 @@ public class BookService(IBookRepo repo)
         repo.Remove(id);
     }
 
-    public void Update(BookDto model)
+    public void Update(BookDtoUpdate model)
     {
         Book book = new Book
         {
-            Id = model.Id,
             Author = model.Author,
             Title = model.Title
         };
         repo.Update(book);
     }
 
-    public BookDto Find(int id)
+    public BookDTO Find(int id)
     {
         Book book = repo.Find(id)!;
-        if (book == null) throw new NotFound("book not found");
-
-        var bookDto = new BookDto
+        
+        BookDTO bookDTO = new BookDTO
         {
             Id = book.Id,
             Title = book.Title,
@@ -69,6 +67,6 @@ public class BookService(IBookRepo repo)
             BorrowedDate = book.BorrowedDate,
             IsBorrowed = book.IsBorrowed
         };
-        return bookDto;
+        return bookDTO;
     }
 }

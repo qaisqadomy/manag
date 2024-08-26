@@ -2,9 +2,8 @@ using System;
 
 namespace Application.DTOs;
 
-public class BookDTO
+public class BookDtoUpdate
 {
-        public int Id { get;  init; }
         public required string Title { get; set; }
         public required string Author { get; set; }
         public bool IsBorrowed { get; set; }
