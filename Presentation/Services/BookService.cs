@@ -1,12 +1,11 @@
 ﻿using Application.DTOs;
-using Application.IServices;
 using Domain.Entities;
 using Domain.Exeptions;
 using Domain.IRepo;
 
 namespace Application.Services;
 
-public class BookService(IBookRepo repo) : IBookService
+public class BookService(IBookRepo repo) 
 {
     public void Add(BookDto model)
     {

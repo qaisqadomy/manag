@@ -1,5 +1,5 @@
 using Application.DTOs;
-using Application.IServices;
+using Application.Services;
 
 namespace LibraryManagment.EndPoints;
 
@@ -8,7 +8,7 @@ public static class LibraryEndpoints
     public static void MapLibraryEndpoints(this WebApplication app)
     {
         var libraryGroup = app.MapGroup("/library").WithTags("Library");
-        libraryGroup.MapPost("/borrow", (int bookId, int memberId, ILibraryService libraryService) =>
+        libraryGroup.MapPost("/borrow", (int bookId, int memberId, LibraryService libraryService) =>
         {
             try
             {
@@ -17,11 +17,11 @@ public static class LibraryEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(e.Message);
+                return Results.BadRequest(e.Message);
             }
         });
         
-        libraryGroup.MapPost("/return", (int bookId, ILibraryService libraryService) =>
+        libraryGroup.MapPost("/return", (int bookId, LibraryService libraryService) =>
         {
             try
             {
@@ -30,11 +30,11 @@ public static class LibraryEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(e.Message);
+                return Results.BadRequest(e.Message);
             }
         });
 
-        libraryGroup.MapGet("/getBorrowed", (ILibraryService libraryService) =>
+        libraryGroup.MapGet("/getBorrowed", (LibraryService libraryService) =>
         {
             try
             {

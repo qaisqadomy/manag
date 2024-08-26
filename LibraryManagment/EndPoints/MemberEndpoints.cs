@@ -1,5 +1,5 @@
 using Application.DTOs;
-using Application.IServices;
+using Application.Services;
 
 namespace LibraryManagment.EndPoints;
 
@@ -9,7 +9,7 @@ public static class MemberEndpoints
     {
         var membersGroup = app.MapGroup("/members")
             .WithTags("Members");
-        membersGroup.MapGet("/GetAll", (IMemberService memberService) =>
+        membersGroup.MapGet("/GetAll", (MemberService memberService) =>
         {
             try
             {
@@ -21,7 +21,7 @@ public static class MemberEndpoints
                 return Results.NotFound(e.Message);
             }
         });
-        membersGroup.MapGet("/Get{id}", (int memberId, IMemberService memberService) =>
+        membersGroup.MapGet("/Get{id}", (int memberId, MemberService memberService) =>
         {
             try
             {
@@ -33,7 +33,7 @@ public static class MemberEndpoints
                 return Results.NotFound(e.Message);
             }
         });
-        membersGroup.MapPost("/add", (MembersDto model, IMemberService memberService) =>
+        membersGroup.MapPost("/add", (MembersDto model, MemberService memberService) =>
         {
             try
             {
@@ -42,10 +42,10 @@ public static class MemberEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(e.Message);
+                return Results.BadRequest(e.Message);
             }
         });
-        membersGroup.MapDelete("/remove", (int memberId, IMemberService memberService) =>
+        membersGroup.MapDelete("/remove", (int memberId, MemberService memberService) =>
         {
             try
             {
@@ -54,10 +54,10 @@ public static class MemberEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(e.Message);
+                return Results.BadRequest(e.Message);
             }
         });
-        membersGroup.MapPut("/update", (MembersDto model, IMemberService memberService) =>
+        membersGroup.MapPut("/update", (MembersDto model, MemberService memberService) =>
         {
             try
             {
@@ -66,7 +66,7 @@ public static class MemberEndpoints
             }
             catch (Exception e)
             {
-                return Results.NotFound(e.Message);
+                return Results.BadRequest(e.Message);
             }
         });
     }

@@ -1,12 +1,11 @@
 ﻿using Application.DTOs;
-using Application.IServices;
 using Domain.Entities;
 using Domain.Exeptions;
 using Domain.IRepo;
 
 namespace Application.Services;
 
-public class MemberService(IMemberRepo repo) : IMemberService
+public class MemberService(IMemberRepo repo) 
 {
     public void Add(MembersDto model)
     {

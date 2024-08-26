@@ -1,5 +1,5 @@
 using Application.DTOs;
-using Application.IServices;
+using Application.Services;
 
 namespace LibraryManagment.EndPoints;
 
@@ -10,7 +10,7 @@ public static class BookEndpoints
         var booksGroup = app.MapGroup("/Books")
             .WithTags("Books");
 
-        booksGroup.MapGet("/GetAll", (IBookService bookService) =>
+        booksGroup.MapGet("/GetAll", (BookService bookService) =>
         {
             try
             {
@@ -22,7 +22,7 @@ public static class BookEndpoints
                 return Results.NotFound(e.Message);
             }
         });
-        booksGroup.MapGet("/Get{id}", (int bookId, IBookService bookService) =>
+        booksGroup.MapGet("/Get{id}", (int bookId, BookService bookService) =>
         {
             try
             {
@@ -34,7 +34,7 @@ public static class BookEndpoints
                 return Results.NotFound(e.Message);
             }
         });
-        booksGroup.MapPost("/add", (BookDto model, IBookService bookService) =>
+        booksGroup.MapPost("/add", (BookDto model, BookService bookService) =>
         {
             try
             {
@@ -46,7 +46,7 @@ public static class BookEndpoints
                 return Results.NotFound(e.Message);
             }
         });
-        booksGroup.MapDelete("/remove", (int bookId, IBookService bookService) =>
+        booksGroup.MapDelete("/remove", (int bookId, BookService bookService) =>
         {
             try
             {
@@ -58,7 +58,7 @@ public static class BookEndpoints
                 return Results.NotFound(e.Message);
             }
         });
-        booksGroup.MapPut("/update", (BookDto model, IBookService bookService) =>
+        booksGroup.MapPut("/update", (BookDto model, BookService bookService) =>
         {
             try
             {

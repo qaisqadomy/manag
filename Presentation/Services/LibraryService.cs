@@ -1,12 +1,11 @@
 ﻿using Application.DTOs;
-using Application.IServices;
 using Domain.Entities;
 using Domain.Exeptions;
 using Domain.IRepo;
 
 namespace Application.Services;
 
-public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IBookRepo bookRepo) : ILibraryService
+public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IBookRepo bookRepo) 
 {
     public void BorrowBook(int bookId, int memberId)
     {

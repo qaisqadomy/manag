@@ -1,4 +1,3 @@
-using Application.IServices;
 using Application.Repos;
 using Application.Services;
 using Domain.IRepo;
@@ -16,9 +15,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<IMemberService, MemberService>();
-builder.Services.AddScoped<ILibraryService, LibraryService>();
+builder.Services.AddScoped<BookService>();
+builder.Services.AddScoped<MemberService>();
+builder.Services.AddScoped<LibraryService>();
 
 builder.Services.AddTransient<IMemberRepo, MemberRepo>();
 builder.Services.AddTransient<ILibraryRepo, LibraryRepo>();
