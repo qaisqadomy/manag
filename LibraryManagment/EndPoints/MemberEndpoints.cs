@@ -1,5 +1,6 @@
 using Application.Services;
 using Application.DTOs;
+using LibraryManagment.Validators;
 
 namespace LibraryManagment.EndPoints;
 
@@ -7,8 +8,11 @@ public static class MemberEndpoints
 {
         public static void MapMemberEndpoints(this WebApplication app)
         {
-        RouteGroupBuilder membersGroup = app.MapGroup("/members")
-                    .WithTags("Members");
+
+                MemberDtoCreateValidator validationRules = new MemberDtoCreateValidator();
+
+                RouteGroupBuilder membersGroup = app.MapGroup("/members")
+                            .WithTags("Members");
                 membersGroup.MapGet("/", (MemberService memberService) =>
                 {
                         List<MemberDTO> list = memberService.GetAll();
@@ -21,6 +25,10 @@ public static class MemberEndpoints
                 });
                 membersGroup.MapPost("/", (MemberDtoCreate model, MemberService memberService) =>
                 {
+                        if (!validationRules.Validate(model).IsValid)
+                        {
+                                return Results.BadRequest();
+                        }
                         memberService.Add(model);
                         return Results.Created();
                 });
@@ -29,8 +37,12 @@ public static class MemberEndpoints
                         memberService.Remove(memberId);
                         return Results.NoContent;
                 });
-                membersGroup.MapPut("/{id}", (MemberDtoCreate model,int memberId, MemberService memberService) =>
+                membersGroup.MapPut("/{id}", (MemberDtoCreate model, int memberId, MemberService memberService) =>
                 {
+                        if (!validationRules.Validate(model).IsValid)
+                        {
+                                return Results.BadRequest();
+                        }
                         memberService.Update(model, memberId);
                         return Results.Ok();
                 });

@@ -31,8 +31,7 @@ builder.Services.AddTransient<IBookRepo, BookRepo>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<BookDtoCreateValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<MemberDtoCreateValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<MemberDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<BookDtoValidator>();
+
 
 
 WebApplication app = builder.Build();

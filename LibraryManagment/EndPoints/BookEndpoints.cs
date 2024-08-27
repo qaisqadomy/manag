@@ -29,7 +29,7 @@ public static class BookEndpoints
         {
             if (!validationRules.Validate(model).IsValid)
             {
-                return Results.BadRequest();
+                return Results.BadRequest(model);
             }
             bookService.Add(model);
             return Results.Created();
