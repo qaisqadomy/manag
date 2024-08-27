@@ -27,12 +27,12 @@ public class MemberRepo(AppDbContext context) : IMemberRepo
         context.SaveChanges();
     }
 
-    public void Update(Member member)
+    public void Update(Member member,int memberId)
     {
-        Member m = context.Members.Find(member.Id) ?? throw new MemberNotFound($"Member with the Id : {member.Id} not found");
+        Member m = context.Members.Find(memberId) ?? throw new MemberNotFound($"Member with the Id : {member.Id} not found");
         m.Name = member.Name;
         m.Email = member.Email;
-        context.Entry(m).CurrentValues.SetValues(member);
+        context.Update(m);
         context.SaveChanges();
     }
 

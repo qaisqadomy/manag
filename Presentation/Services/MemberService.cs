@@ -1,13 +1,12 @@
 ﻿using Application.DTOs;
 using Domain.Entities;
-using Domain.Exeptions;
 using Domain.IRepo;
 
 namespace Application.Services;
 
 public class MemberService(IMemberRepo repo)
 {
-    public void Add(MemberDtoUpdate model)
+    public void Add(MemberDtoCreate model)
     {
         Member member = new Member
         {
@@ -17,10 +16,10 @@ public class MemberService(IMemberRepo repo)
         repo.Add(member);
     }
 
-    public List<MemberDto> GetAll()
+    public List<MemberDTO> GetAll()
     {
         List<Member> members = repo.GetAll();
-        return members.ConvertAll(member => new MemberDto
+        return members.ConvertAll(member => new MemberDTO
         {
             Id = member.Id,
             Name = member.Name,
@@ -33,21 +32,22 @@ public class MemberService(IMemberRepo repo)
         repo.Remove(memberId);
     }
 
-    public void Update(MemberDtoUpdate model)
+    public void Update(MemberDtoCreate model ,int memberId)
     {
         Member member = new Member
         {
             Name = model.Name,
             Email = model.Email
         };
-        repo.Update(member);
+        repo.Update(member,memberId);
+        
     }
 
-    public MemberDto Find(int memberId)
+    public MemberDTO Find(int memberId)
     {
         Member member = repo.Find(memberId)!;
 
-        MemberDto memberDto = new MemberDto
+        MemberDTO memberDto = new MemberDTO
         {
             Id = member.Id,
             Name = member.Name,

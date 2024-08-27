@@ -34,15 +34,15 @@ public class MemberServiceTests
     [Fact]
     public void GetAll_ShouldReturnListOfMembersDto()
     {
-        var members = new List<Member>
+        List<Member> members = new List<Member>
         {
             new Member { Id = 1, Name = "qais", Email = "qais@gmail.com" },
             new Member { Id = 2, Name = "ali", Email = "ali@gmail.com" }
         };
 
         _mockRepo.Setup(r => r.GetAll()).Returns(members);
-            
-        var result = _service.GetAll();
+
+        List<MemberDTO> result = _service.GetAll();
             
         Assert.NotNull(result);
         Assert.Equal(2, result.Count);
@@ -75,10 +75,10 @@ public class MemberServiceTests
     [Fact]
     public void Find_ShouldReturnMemberDto_WhenMemberExists()
     {
-        var member = new Member {  Name = "qais", Email = "qais@gmail.com" };
+        Member member = new Member {  Name = "qais", Email = "qais@gmail.com" };
         _mockRepo.Setup(r => r.Find(1)).Returns(member);
-            
-        var result = _service.Find(1);
+
+        MemberDTO result = _service.Find(1);
             
         Assert.NotNull(result);
         Assert.Equal("qais", result.Name);

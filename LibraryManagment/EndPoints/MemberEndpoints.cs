@@ -7,19 +7,19 @@ public static class MemberEndpoints
 {
         public static void MapMemberEndpoints(this WebApplication app)
         {
-                var membersGroup = app.MapGroup("/members")
+        RouteGroupBuilder membersGroup = app.MapGroup("/members")
                     .WithTags("Members");
                 membersGroup.MapGet("/", (MemberService memberService) =>
                 {
-                        List<MemberDto> list = memberService.GetAll();
+                        List<MemberDTO> list = memberService.GetAll();
                         return Results.Ok(list);
                 });
                 membersGroup.MapGet("/{id}", (int memberId, MemberService memberService) =>
                 {
-                        MemberDto member = memberService.Find(memberId);
+                        MemberDTO member = memberService.Find(memberId);
                         return Results.Ok(member);
                 });
-                membersGroup.MapPost("/", (MemberDtoUpdate model, MemberService memberService) =>
+                membersGroup.MapPost("/", (MemberDtoCreate model, MemberService memberService) =>
                 {
                         memberService.Add(model);
                         return Results.Created();
@@ -29,9 +29,9 @@ public static class MemberEndpoints
                         memberService.Remove(memberId);
                         return Results.NoContent;
                 });
-                membersGroup.MapPut("/", (MemberDtoUpdate model, MemberService memberService) =>
+                membersGroup.MapPut("/{id}", (MemberDtoCreate model,int memberId, MemberService memberService) =>
                 {
-                        memberService.Update(model);
+                        memberService.Update(model, memberId);
                         return Results.Ok();
                 });
         }

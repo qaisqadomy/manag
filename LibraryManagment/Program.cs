@@ -5,11 +5,11 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using LibraryManagment.EndPoints;
 using LibraryManagment.Middleware;
-using FluentValidation.AspNetCore;
+using FluentValidation;
+using LibraryManagment.Validators;
 
 
-
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
@@ -20,15 +20,6 @@ builder.Services.AddLogging();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-builder.Services.AddControllers()
-    .AddFluentValidationAutoValidation()
-    .AddFluentValidationClientsideAdapters()
-    .AddFluentValidation(fv =>
-    {
-        fv.RegisterValidatorsFromAssemblyContaining<CreateBookDTOValidator>();
-    });
-
 builder.Services.AddScoped<BookService>();
 builder.Services.AddScoped<MemberService>();
 builder.Services.AddScoped<LibraryService>();
@@ -37,7 +28,15 @@ builder.Services.AddTransient<IMemberRepo, MemberRepo>();
 builder.Services.AddTransient<ILibraryRepo, LibraryRepo>();
 builder.Services.AddTransient<IBookRepo, BookRepo>();
 
-var app = builder.Build();
+
+builder.Services.AddValidatorsFromAssemblyContaining<BookDtoCreateValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<MemberDtoCreateValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<MemberDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<BookDtoValidator>();
+
+
+
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

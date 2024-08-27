@@ -1,8 +1,6 @@
-using System;
-
 namespace Application.DTOs;
 
-public class MemberDto
+public class MemberDTO
 {
 
     public int Id { get; init; }

@@ -5,8 +5,8 @@ namespace Domain.IRepo;
 public interface IMemberRepo
 {
     List<Member> GetAll();
-    void Add(Member member);
+        void Add(Member member);
     void Remove(int memberId);
-    void Update(Member member);
+    void Update(Member member,int memberId);
     Member? Find(int memberId);
 }

@@ -1,13 +1,12 @@
 ﻿using Application.DTOs;
 using Domain.Entities;
-using Domain.Exeptions;
 using Domain.IRepo;
 
 namespace Application.Services;
 
 public class BookService(IBookRepo repo) 
 {
-    public void Add(BookDtoUpdate model)
+    public void Add(BookDtoCreate model)
     {
         Book book = new Book
         {
@@ -44,14 +43,14 @@ public class BookService(IBookRepo repo)
         repo.Remove(id);
     }
 
-    public void Update(BookDtoUpdate model)
+    public void Update(BookDtoCreate model , int bookId)
     {
         Book book = new Book
         {
             Author = model.Author,
             Title = model.Title
         };
-        repo.Update(book);
+        repo.Update(book , bookId);
     }
 
     public BookDTO Find(int id)

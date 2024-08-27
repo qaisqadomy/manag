@@ -37,7 +37,7 @@ public class LibraryServiceTests
     [Fact]
     public void BorrowBook_MemberNotFound_ShouldThrowNotFoundException()
     {
-        var books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
+        List<Book> books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
         _bookRepoMock.Setup(repo => repo.GetAll())
             .Returns(books);
         _memberRepoMock.Setup(repo => repo.GetAll())
@@ -48,10 +48,10 @@ public class LibraryServiceTests
     [Fact]
     public void BorrowBook_BookDoesntExist_ShouldThrowNotFoundException()
     {
-        var books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
+        List<Book> books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
         _bookRepoMock.Setup(repo => repo.GetAll())
             .Returns(books);
-        var members = new List<Member> { new Member { Id = 1, Name = "qais", Email = "qais@gmail.com" } };
+        List<Member> members = new List<Member> { new Member { Id = 1, Name = "qais", Email = "qais@gmail.com" } };
         _memberRepoMock.Setup(repo => repo.GetAll()).Returns(members);
 
 
@@ -61,10 +61,10 @@ public class LibraryServiceTests
     [Fact]
     public void BorrowBook_MemberDoesntExist_ShouldThrowNotFoundException()
     {
-        var books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
+        List<Book> books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
         _bookRepoMock.Setup(repo => repo.GetAll())
             .Returns(books);
-        var members = new List<Member> { new Member { Id = 1, Name = "qais", Email = "qais@gmail.com" } };
+        List<Member> members = new List<Member> { new Member { Id = 1, Name = "qais", Email = "qais@gmail.com" } };
         _memberRepoMock.Setup(repo => repo.GetAll()).Returns(members);
 
         Assert.Throws<NotFound>(() => _libraryService.BorrowBook(1, 2));
@@ -73,8 +73,8 @@ public class LibraryServiceTests
     [Fact]
     public void BorrowBook_BookAlreadyBorrowed_ShouldThrowInvalidOperationException()
     {
-        var books = new List<Book> { new Book { Id = 1, IsBorrowed = true, Title = "qais", Author = "qais" } };
-        var members = new List<Member> { new Member { Id = 1, Name = "qais", Email = "qais@gmail.com" } };
+        List<Book> books = new List<Book> { new Book { Id = 1, IsBorrowed = true, Title = "qais", Author = "qais" } };
+        List<Member> members = new List<Member> { new Member { Id = 1, Name = "qais", Email = "qais@gmail.com" } };
 
         _bookRepoMock.Setup(repo => repo.GetAll())
             .Returns(books);
@@ -89,8 +89,8 @@ public class LibraryServiceTests
     [Fact]
     public void BorrowBook_ValidInputs_ShouldCallBorrowBookOnLibraryRepo()
     {
-        var books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
-        var members = new List<Member> { new Member { Id = 1, Name = "qais", Email = "qais@gmail.com" } };
+        List<Book> books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
+        List<Member> members = new List<Member> { new Member { Id = 1, Name = "qais", Email = "qais@gmail.com" } };
         _bookRepoMock.Setup(repo => repo.GetAll())
             .Returns(books);
         _memberRepoMock.Setup(repo => repo.GetAll())
@@ -127,7 +127,7 @@ public class LibraryServiceTests
     [Fact]
     public void ReturnBook_BookNotBorrowed_ShouldThrowInvalidOperationException()
     {
-        var books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
+        List<Book> books = new List<Book> { new Book { Id = 1, IsBorrowed = false, Title = "qais", Author = "qais" } };
         _bookRepoMock.Setup(repo => repo.GetAll())
             .Returns(books);
         Assert.Throws<InvalidOperation>(() => _libraryService.ReturnBook(1));
@@ -136,7 +136,7 @@ public class LibraryServiceTests
     [Fact]
     public void ReturnBook_ValidInputs_ShouldCallReturnBookOnLibraryRepo()
     {
-        var books = new List<Book> { new Book { Id = 1, IsBorrowed = true, Title = "qais", Author = "qais" } };
+        List<Book> books = new List<Book> { new Book { Id = 1, IsBorrowed = true, Title = "qais", Author = "qais" } };
         _bookRepoMock.Setup(repo => repo.GetAll())
             .Returns(books);
         _libraryService.ReturnBook(1);
@@ -146,7 +146,7 @@ public class LibraryServiceTests
     public void GetBorrowed_shouldreturnonlyborrowedbooks()
     {
         // Arrange
-        var books = new List<Book>
+        List<Book> books = new List<Book>
         {
             new Book
             {
@@ -171,7 +171,7 @@ public class LibraryServiceTests
         _libraryRepoMock.Setup(repo => repo.GetBorrowed()).Returns(books);
 
         // Act
-        var result = _libraryService.GetBorrowed();
+        List<BookDTO> result = _libraryService.GetBorrowed();
 
         // Assert
         Assert.NotNull(result);

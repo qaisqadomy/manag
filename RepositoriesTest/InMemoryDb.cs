@@ -9,8 +9,8 @@ public class InMemoryDb
 
     public InMemoryDb()
     {
-        var uniqueId = Guid.NewGuid().ToString();
-        var options = new DbContextOptionsBuilder<AppDbContext>()
+        string uniqueId = Guid.NewGuid().ToString();
+        DbContextOptions<AppDbContext> options = new DbContextOptionsBuilder<AppDbContext>()
             .UseInMemoryDatabase($"TestDatabase_{uniqueId}")
             .Options;
 

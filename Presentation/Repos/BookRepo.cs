@@ -25,10 +25,13 @@ public class BookRepo(AppDbContext context) : IBookRepo
             context.SaveChanges();
     }
 
-    public void Update(Book book)
+    public void Update(Book book , int bookId)
     {
-        Book existingBook = context.Books.Find(book.Id) ?? throw new BookNotFound($"Book with the Id : {book.Id} doesn't exist");
-        context.Entry(existingBook).CurrentValues.SetValues(book);
+        Book existingBook = context.Books.Find(bookId) ?? throw new BookNotFound($"Book with the Id : {book.Id} doesn't exist");
+      
+      existingBook.Author = book.Author;
+      existingBook.Title = book.Title;
+        context.Update(existingBook);
         context.SaveChanges();
     }
 
@@ -69,7 +72,7 @@ public class BookRepo(AppDbContext context) : IBookRepo
 
     public void Return(Book book)
     {
-        var b = context.Books.FirstOrDefault(b => b.Id == book.Id)
+        Book b = context.Books.FirstOrDefault(b => b.Id == book.Id)
                 ?? throw new BookNotFound($"Book with the Id : {book.Id} doesn't exist");
 
         if (!IsBorrowed(b.Id))

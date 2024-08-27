@@ -36,7 +36,7 @@ namespace RepositoriesTest
         [Fact]
         public void BorrowBook_ShouldThrowException_WhenBookIsAlreadyBorrowed()
         {
-            var books = new List<Book> { TestData.BorrowedBook };
+            List<Book> books = new List<Book> { TestData.BorrowedBook };
             _inMemoryDb.DbContext.Books.AddRange(books);
             _inMemoryDb.DbContext.SaveChanges();
 
@@ -47,7 +47,7 @@ namespace RepositoriesTest
         [Fact]
         public void BorrowBook_ShouldBorrowBook_WhenValid()
         {
-            var books = new List<Book>{TestData.NotBorrowedBook };
+            List<Book> books = new List<Book>{TestData.NotBorrowedBook };
             _inMemoryDb.DbContext.Books.AddRange(books);
             _inMemoryDb.DbContext.SaveChanges();
 
@@ -55,7 +55,7 @@ namespace RepositoriesTest
             _libraryRepo.BorrowBook(1, 1);
 
 
-            var book = _inMemoryDb.DbContext.Books.SingleOrDefault(b => b.Id == 1);
+            Book? book = _inMemoryDb.DbContext.Books.SingleOrDefault(b => b.Id == 1);
             Assert.NotNull(book);
             Assert.True(book.IsBorrowed);
             Assert.Equal(1, book.BorrowedBy);
@@ -80,7 +80,7 @@ namespace RepositoriesTest
         [Fact]
         public void ReturnBook_ShouldThrowException_WhenBookIsNotBorrowed()
         {
-            var books = new List<Book>{TestData.ExistingBook };
+            List<Book> books = new List<Book>{TestData.ExistingBook };
             _inMemoryDb.DbContext.Books.AddRange(books);
             _inMemoryDb.DbContext.SaveChanges();
 

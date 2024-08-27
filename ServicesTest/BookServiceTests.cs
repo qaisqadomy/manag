@@ -42,7 +42,7 @@ public class BookServiceTests
     [Fact]
     public void GetAll_ShouldReturnListOfBookDto()
     {
-        var books = new List<Book>
+        List<Book> books = new List<Book>
         {
             new Book
             {
@@ -59,7 +59,7 @@ public class BookServiceTests
         _mockRepo.Setup(r => r.GetAll()).Returns(books);
 
 
-        var result = _service.GetAll();
+        List<BookDTO> result = _service.GetAll();
 
 
         Assert.NotNull(result);
@@ -73,8 +73,8 @@ public class BookServiceTests
     {
 
         _mockRepo.Setup(r => r.GetAll()).Returns(new List<Book>());
-        
-        var result = _service.GetAll();
+
+        List<BookDTO> result = _service.GetAll();
 
         Assert.NotNull(result);
         Assert.Empty(result);
@@ -111,7 +111,7 @@ public class BookServiceTests
     [Fact]
     public void Find_ShouldReturnBookDto_WhenBookExists()
     {
-        var book = new Book
+        Book book = new Book
         {
             Title = "Book Title",
             Author = "Author Name",
@@ -121,8 +121,8 @@ public class BookServiceTests
         };
 
         _mockRepo.Setup(r => r.Find(1)).Returns(book);
-        
-        var result = _service.Find(1);
+
+        BookDTO result = _service.Find(1);
         
         Assert.NotNull(result);
         Assert.Equal("Book Title", result.Title);

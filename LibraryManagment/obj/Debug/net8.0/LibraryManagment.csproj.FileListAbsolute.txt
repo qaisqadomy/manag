@@ -203,7 +203,6 @@
 /home/qais/Downloads/manag/Library/LibraryManagment/bin/Debug/net8.0/Azure.Core.dll
 /home/qais/Downloads/manag/Library/LibraryManagment/bin/Debug/net8.0/Azure.Identity.dll
 /home/qais/Downloads/manag/Library/LibraryManagment/bin/Debug/net8.0/FluentValidation.dll
-/home/qais/Downloads/manag/Library/LibraryManagment/bin/Debug/net8.0/FluentValidation.AspNetCore.dll
 /home/qais/Downloads/manag/Library/LibraryManagment/bin/Debug/net8.0/FluentValidation.DependencyInjectionExtensions.dll
 /home/qais/Downloads/manag/Library/LibraryManagment/bin/Debug/net8.0/Humanizer.dll
 /home/qais/Downloads/manag/Library/LibraryManagment/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll

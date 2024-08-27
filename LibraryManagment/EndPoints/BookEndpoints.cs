@@ -1,6 +1,6 @@
 using Application.DTOs;
 using Application.Services;
-using FluentValidation;
+using LibraryManagment.Validators;
 
 namespace LibraryManagment.EndPoints;
 
@@ -8,7 +8,9 @@ public static class BookEndpoints
 {
     public static void MapBookEndpoints(this WebApplication app)
     {
-        var booksGroup = app.MapGroup("/books")
+        BookDtoCreateValidator validationRules = new BookDtoCreateValidator();
+
+        RouteGroupBuilder booksGroup = app.MapGroup("/books")
             .WithTags("Books");
 
         booksGroup.MapGet("/", (BookService bookService) =>
@@ -23,12 +25,14 @@ public static class BookEndpoints
             BookDTO book = bookService.Find(bookId);
             return Results.Ok(book);
         });
-        booksGroup.MapPost("/", (BookDtoUpdate model, BookService bookService) =>
+        booksGroup.MapPost("/", (BookDtoCreate model, BookService bookService) =>
         {
-            
+            if (!validationRules.Validate(model).IsValid)
+            {
+                return Results.BadRequest();
+            }
             bookService.Add(model);
             return Results.Created();
-
         });
         booksGroup.MapDelete("/", (int bookId, BookService bookService) =>
         {
@@ -36,10 +40,16 @@ public static class BookEndpoints
             return Results.NoContent();
 
         });
-        booksGroup.MapPut("/", (BookDtoUpdate model, BookService bookService) =>
+        booksGroup.MapPut("/", (BookDtoCreate model,int bookId, BookService bookService) =>
         {
-            bookService.Update(model);
-            return Results.Ok("updated successfully");
+
+            if (!validationRules.Validate(model).IsValid)
+            {
+                return Results.BadRequest();
+            }
+
+            bookService.Update(model,bookId);
+            return Results.Ok(model);
         });
     }
 }

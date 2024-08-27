@@ -7,7 +7,7 @@ public static class LibraryEndpoints
 {
     public static void MapLibraryEndpoints(this WebApplication app)
     {
-        var libraryGroup = app.MapGroup("/library").WithTags("Library");
+        RouteGroupBuilder libraryGroup = app.MapGroup("/library").WithTags("Library");
         libraryGroup.MapPost("/borrow", (int bookId, int memberId, LibraryService libraryService) =>
         {
             libraryService.BorrowBook(bookId, memberId);
