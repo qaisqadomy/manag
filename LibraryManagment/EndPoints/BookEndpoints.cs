@@ -32,12 +32,12 @@ public static class BookEndpoints
                 return Results.BadRequest(model);
             }
             bookService.Add(model);
-            return Results.Created();
+            return Results.Ok();
         });
         booksGroup.MapDelete("/", (int bookId, BookService bookService) =>
         {
             bookService.Remove(bookId);
-            return Results.NoContent();
+            return Results.Ok();
 
         });
         booksGroup.MapPut("/", (BookDtoCreate model,int bookId, BookService bookService) =>

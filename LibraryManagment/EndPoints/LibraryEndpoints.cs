@@ -11,13 +11,13 @@ public static class LibraryEndpoints
         libraryGroup.MapPost("/borrow", (int bookId, int memberId, LibraryService libraryService) =>
         {
             libraryService.BorrowBook(bookId, memberId);
-            return Results.Ok("borrowed successfully");
+            return Results.Ok();
         });
 
         libraryGroup.MapPost("/return", (int bookId, LibraryService libraryService) =>
         {
             libraryService.ReturnBook(bookId);
-            return Results.Ok("returned successfully");
+            return Results.Ok();
 
         });
 

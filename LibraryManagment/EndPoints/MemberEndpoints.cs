@@ -35,7 +35,7 @@ public static class MemberEndpoints
                 membersGroup.MapDelete("/", (int memberId, MemberService memberService) =>
                 {
                         memberService.Remove(memberId);
-                        return Results.NoContent;
+                         return Results.Ok();
                 });
                 membersGroup.MapPut("/{id}", (MemberDtoCreate model, int memberId, MemberService memberService) =>
                 {
