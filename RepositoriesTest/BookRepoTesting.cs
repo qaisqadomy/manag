@@ -70,7 +70,7 @@ public class BookRepoTests
     {
         Book updatedBook = TestData.UpdatedBook;
 
-        Assert.Throws<BookNotFound>(() => _bookRepo.Update(updatedBook));
+        Assert.Throws<BookNotFound>(() => _bookRepo.Update(updatedBook,1));
     }
 
     [Fact]
@@ -81,7 +81,7 @@ public class BookRepoTests
         _inMemoryDb.DbContext.SaveChanges();
 
         Book updatedBook = TestData.ExistingBook;
-        _bookRepo.Update(updatedBook);
+        _bookRepo.Update(updatedBook,1);
 
         Book book = _inMemoryDb.DbContext.Books.SingleOrDefault(b => b.Id == 1)!;
         Assert.NotNull(book);
@@ -178,6 +178,13 @@ public class BookRepoTests
         _inMemoryDb.DbContext.SaveChanges();
         Assert.Throws<AlreadyBorrowed>(() => _bookRepo.Borrow(book, memberId));
     }
+    [Fact]
+    public void Borrow_ShouldThrowNotFound_WhenBookIsNotFound()
+    {
+        const int memberId = 1;
+        Book book = TestData.BorrowedBook;
+        Assert.Throws<BookNotFound>(() => _bookRepo.Borrow(book, memberId));
+    }
 
     [Fact]
     public void Return_ShouldSetBookAsNotBorrowed()
@@ -199,5 +206,11 @@ public class BookRepoTests
         _inMemoryDb.DbContext.Books.Add(book);
         _inMemoryDb.DbContext.SaveChanges();
         Assert.Throws<NotBorrowed>(() => _bookRepo.Return(book));
+    }
+     [Fact]
+    public void Return_ShouldThrowNotFound_WhenBookIsNotFound()
+    {
+        Book book = TestData.NewBook;
+        Assert.Throws<BookNotFound>(() => _bookRepo.Return(book));
     }
 }

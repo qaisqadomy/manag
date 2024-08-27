@@ -21,12 +21,11 @@ public class MemberServiceTests
     [Fact]
     public void Add_ShouldCallRepoAddOnce()
     {
-        var memberDto = new MembersDto { Name = "qais", Email = "qais@gmail.com" };
+        var memberDto = new MemberDtoCreate { Name = "qais", Email = "qais@gmail.com" };
             
         _service.Add(memberDto);
             
         _mockRepo.Verify(r => r.Add(It.Is<Member>(m =>
-            m.Id == memberDto.Id &&
             m.Name == memberDto.Name &&
             m.Email == memberDto.Email)), Times.Once);
     }
@@ -63,13 +62,13 @@ public class MemberServiceTests
     [Fact]
     public void Update_ShouldCallRepoUpdateOnce()
     {
-        var memberDto = new MembersDto { Name = "qais", Email = "qais@gmail.com" };
+        var memberDto = new MemberDtoCreate { Name = "qais", Email = "qais@gmail.com" };
             
-        _service.Update(memberDto);
+        _service.Update(memberDto,1);
             
         _mockRepo.Verify(r => r.Update(It.Is<Member>(m =>
             m.Name == memberDto.Name &&
-            m.Email == memberDto.Email)), Times.Once);
+            m.Email == memberDto.Email),1), Times.Once);
     }
 
     [Fact]
@@ -83,12 +82,5 @@ public class MemberServiceTests
         Assert.NotNull(result);
         Assert.Equal("qais", result.Name);
         Assert.Equal("qais@gmail.com", result.Email);
-    }
-
-    [Fact]
-    public void Find_ShouldThrowNotFoundException_WhenMemberDoesNotExist()
-    {
-        _mockRepo.Setup(r => r.Find(1)).Returns((Member)null!);
-        Assert.Throws<NotFound>(() => _service.Find(1));
     }
 }

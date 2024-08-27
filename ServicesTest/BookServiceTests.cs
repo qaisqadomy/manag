@@ -21,7 +21,7 @@ public class BookServiceTests
     [Fact]
     public void Add_ShouldCallRepoAddOnce()
     {
-        var bookDto = new BookDto
+        var bookDto = new BookDtoCreate   
         {
             Title = "Book Title",
             Author = "Author Name",
@@ -94,18 +94,18 @@ public class BookServiceTests
     [Fact]
     public void Update_ShouldCallRepoUpdateOnce()
     {
-        var bookDto = new BookDto
+        var bookDto = new BookDtoCreate
         {
-            Id = 1,
+            
             Title = "Updated Title",
             Author = "Updated Author",
         };
 
-        _service.Update(bookDto);
+        _service.Update(bookDto,1);
 
         _mockRepo.Verify(r => r.Update(It.Is<Book>(b =>
             b.Title == bookDto.Title &&
-            b.Author == bookDto.Author )), Times.Once);
+            b.Author == bookDto.Author ),1), Times.Once);
     }
 
     [Fact]
@@ -132,11 +132,5 @@ public class BookServiceTests
         Assert.Null(result.BorrowedBy);
     }
 
-    [Fact]
-    public void Find_ShouldThrowNotFoundException_WhenBookDoesNotExist()
-    {
-        _mockRepo.Setup(r => r.Find(1)).Returns((Book)null!);
-
-        Assert.Throws<NotFound>(() => _service.Find(1));
-    }
+    
 }

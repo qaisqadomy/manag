@@ -65,7 +65,7 @@ namespace RepositoriesTest
         {
             Member updatedMember = TestData.CreateNewMember;
 
-            Assert.Throws<MemberNotFound>(() => _memberRepo.Update(updatedMember));
+            Assert.Throws<MemberNotFound>(() => _memberRepo.Update(updatedMember,1));
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace RepositoriesTest
             _inMemoryDb.DbContext.SaveChanges();
 
             Member updatedMember = TestData.UpdatedMember;
-            _memberRepo.Update(updatedMember);
+            _memberRepo.Update(updatedMember,1);
 
             Member memberInDb = _inMemoryDb.DbContext.Members.SingleOrDefault(m => m.Id == 1)!;
             Assert.NotNull(memberInDb);

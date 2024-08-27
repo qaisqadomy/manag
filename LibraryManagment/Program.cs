@@ -35,7 +35,6 @@ builder.Services.AddValidatorsFromAssemblyContaining<MemberDtoValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<BookDtoValidator>();
 
 
-
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.

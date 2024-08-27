@@ -9,16 +9,15 @@ public class LibraryService(ILibraryRepo libraryRepo, IMemberRepo memberRepo, IB
 {
     public void BorrowBook(int bookId, int memberId)
     {
-        Book book = (bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId) ?? throw new NotFound("no books "))!;
-        Member member = (memberRepo.GetAll().FirstOrDefault(m => m.Id == memberId) ?? throw new NotFound("no members"))!;
+        Book book = bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId)!;
+        Member member = memberRepo.GetAll().FirstOrDefault(m => m.Id == memberId)!;
 
         libraryRepo.BorrowBook(bookId, memberId);
     }
 
     public void ReturnBook(int bookId)
     {
-        Book book = (bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId) ?? throw new BookNotFound("no books"))!;
-
+        Book book = bookRepo.GetAll().FirstOrDefault(b => b.Id == bookId)!;
         libraryRepo.ReturnBook(bookId);
     }
 
